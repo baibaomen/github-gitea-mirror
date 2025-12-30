@@ -95,6 +95,7 @@ class GiteaClient:
             "wiki": True,
             "lfs": True,
             "service": "github",
+            "auth_token": github_token,  # Required for Gitea to access private repos
         }
 
         try:

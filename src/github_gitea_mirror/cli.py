@@ -3,13 +3,15 @@
 from __future__ import annotations
 
 import logging
+from importlib.metadata import version
 from typing import Annotated, Optional
 
 import typer
 
-from github_gitea_mirror import __version__
 from github_gitea_mirror.config import Config
 from github_gitea_mirror.sync import run_daemon, sync_once
+
+__version__ = version("github-gitea-mirror")
 
 
 def version_callback(value: bool) -> None:
