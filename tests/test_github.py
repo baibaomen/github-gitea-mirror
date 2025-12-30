@@ -38,6 +38,7 @@ class TestGitHubRepo:
         # Should raise FrozenInstanceError
         try:
             repo.name = "changed"  # type: ignore[misc]
-            assert False, "Should have raised an error"
+            msg = "Should have raised an error"
+            raise AssertionError(msg)
         except Exception:
             pass  # Expected

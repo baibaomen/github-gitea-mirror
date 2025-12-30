@@ -45,8 +45,7 @@ def sync_once(config: Config) -> tuple[int, int]:
 
         # Find new repos
         new_repos = [
-            r for r in github_repos
-            if r.name not in existing and r.name not in config.skip_repos
+            r for r in github_repos if r.name not in existing and r.name not in config.skip_repos
         ]
 
         if not new_repos:

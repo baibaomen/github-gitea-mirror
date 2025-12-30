@@ -33,9 +33,11 @@ class TestConfig:
 
     def test_from_env_missing_required(self) -> None:
         """Test that missing required vars raise ValueError."""
-        with mock.patch.dict(os.environ, {}, clear=True):
-            with pytest.raises(ValueError, match="Missing required"):
-                Config.from_env()
+        with (
+            mock.patch.dict(os.environ, {}, clear=True),
+            pytest.raises(ValueError, match="Missing required"),
+        ):
+            Config.from_env()
 
     def test_from_env_with_optional(self) -> None:
         """Test creating config with optional env vars."""

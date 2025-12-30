@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import logging
 from importlib.metadata import version
-from typing import Annotated, Optional
+from typing import Annotated
 
 import typer
 
@@ -37,16 +37,14 @@ logging.basicConfig(
 def main(
     ctx: typer.Context,
     github_token: Annotated[
-        Optional[str], typer.Option(envvar="GITHUB_TOKEN", help="GitHub PAT")
+        str | None, typer.Option(envvar="GITHUB_TOKEN", help="GitHub PAT")
     ] = None,
-    gitea_url: Annotated[
-        Optional[str], typer.Option(envvar="GITEA_URL", help="Gitea URL")
-    ] = None,
+    gitea_url: Annotated[str | None, typer.Option(envvar="GITEA_URL", help="Gitea URL")] = None,
     gitea_token: Annotated[
-        Optional[str], typer.Option(envvar="GITEA_TOKEN", help="Gitea token")
+        str | None, typer.Option(envvar="GITEA_TOKEN", help="Gitea token")
     ] = None,
     gitea_owner: Annotated[
-        Optional[str], typer.Option(envvar="GITEA_OWNER", help="Gitea owner")
+        str | None, typer.Option(envvar="GITEA_OWNER", help="Gitea owner")
     ] = None,
     interval: Annotated[
         int, typer.Option(envvar="SYNC_INTERVAL", help="Sync interval in seconds")
@@ -54,23 +52,16 @@ def main(
     mirror_interval: Annotated[
         str, typer.Option(envvar="MIRROR_INTERVAL", help="Gitea mirror interval")
     ] = "10m",
-    include_private: Annotated[
-        bool, typer.Option(help="Include private repos")
-    ] = True,
-    include_forks: Annotated[
-        bool, typer.Option(help="Include forked repos")
-    ] = False,
-    skip: Annotated[
-        Optional[str], typer.Option(help="Repos to skip (comma-separated)")
-    ] = None,
-    dry_run: Annotated[
-        bool, typer.Option(help="Preview without changes")
-    ] = False,
-    daemon: Annotated[
-        bool, typer.Option(help="Run continuously")
-    ] = False,
+    include_private: Annotated[bool, typer.Option(help="Include private repos")] = True,
+    include_forks: Annotated[bool, typer.Option(help="Include forked repos")] = False,
+    skip: Annotated[str | None, typer.Option(help="Repos to skip (comma-separated)")] = None,
+    dry_run: Annotated[bool, typer.Option(help="Preview without changes")] = False,
+    daemon: Annotated[bool, typer.Option(help="Run continuously")] = False,
     version: Annotated[
-        bool, typer.Option("--version", "-v", callback=version_callback, is_eager=True, help="Show version")
+        bool,
+        typer.Option(
+            "--version", "-v", callback=version_callback, is_eager=True, help="Show version"
+        ),
     ] = False,
 ) -> None:
     """Mirror GitHub repositories to Gitea."""
