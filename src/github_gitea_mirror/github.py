@@ -66,7 +66,8 @@ class GitHubClient:
         """
         resp = self._client.get(f"{self.BASE_URL}/user")
         resp.raise_for_status()
-        return resp.json()["login"]
+        login: str = resp.json()["login"]
+        return login
 
     def iter_repos(
         self,
