@@ -1,0 +1,16 @@
+services:
+  mirror:
+    build: .
+    image: nickelchen/github-gitea-mirror
+    container_name: github-gitea-mirror
+    restart: unless-stopped
+    environment:
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - GITEA_URL=${GITEA_URL}
+      - GITEA_TOKEN=${GITEA_TOKEN}
+      - GITEA_OWNER=${GITEA_OWNER}
+      - SYNC_INTERVAL=${SYNC_INTERVAL:-600}
+      - MIRROR_INTERVAL=${MIRROR_INTERVAL:-10m}
+      - INCLUDE_PRIVATE=${INCLUDE_PRIVATE:-true}
+      - INCLUDE_FORKS=${INCLUDE_FORKS:-false}
+      - SKIP_REPOS=${SKIP_REPOS:-}

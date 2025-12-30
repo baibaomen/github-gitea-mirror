@@ -1,0 +1,57 @@
+name: 'GitHub Gitea Mirror'
+description: 'Automatically mirror your GitHub repos to Gitea'
+author: 'nickelchen'
+
+branding:
+  icon: 'copy'
+  color: 'green'
+
+inputs:
+  github_token:
+    description: 'GitHub Personal Access Token'
+    required: true
+  gitea_url:
+    description: 'Gitea instance URL'
+    required: true
+  gitea_token:
+    description: 'Gitea access token'
+    required: true
+  gitea_owner:
+    description: 'Gitea user/org to own mirrors'
+    required: true
+  include_private:
+    description: 'Include private repos'
+    required: false
+    default: 'true'
+  include_forks:
+    description: 'Include forked repos'
+    required: false
+    default: 'false'
+  skip_repos:
+    description: 'Repos to skip (comma-separated)'
+    required: false
+    default: ''
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Install github-gitea-mirror
+      shell: bash
+      run: pip install github-gitea-mirror
+
+    - name: Run sync
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.github_token }}
+        GITEA_URL: ${{ inputs.gitea_url }}
+        GITEA_TOKEN: ${{ inputs.gitea_token }}
+        GITEA_OWNER: ${{ inputs.gitea_owner }}
+        INCLUDE_PRIVATE: ${{ inputs.include_private }}
+        INCLUDE_FORKS: ${{ inputs.include_forks }}
+        SKIP_REPOS: ${{ inputs.skip_repos }}
+      run: github-gitea-mirror
