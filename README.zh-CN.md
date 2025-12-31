@@ -4,11 +4,11 @@
     <strong>自动发现并镜像你整个 GitHub 账号的仓库到自建的 Gitea。</strong>
   </p>
   <p align="center">
-    <a href="https://github.com/nickelchen/github-gitea-mirror/releases"><img src="https://img.shields.io/github/v/release/nickelchen/github-gitea-mirror?style=flat-square" alt="Release"></a>
-    <a href="https://github.com/nickelchen/github-gitea-mirror/actions"><img src="https://img.shields.io/github/actions/workflow/status/nickelchen/github-gitea-mirror/ci.yml?style=flat-square" alt="CI"></a>
+    <a href="https://github.com/baibaomen/github-gitea-mirror/releases"><img src="https://img.shields.io/github/v/release/baibaomen/github-gitea-mirror?style=flat-square" alt="Release"></a>
+    <a href="https://github.com/baibaomen/github-gitea-mirror/actions"><img src="https://img.shields.io/github/actions/workflow/status/baibaomen/github-gitea-mirror/ci.yml?style=flat-square" alt="CI"></a>
     <a href="https://pypi.org/project/github-gitea-mirror/"><img src="https://img.shields.io/pypi/v/github-gitea-mirror?style=flat-square" alt="PyPI"></a>
-    <a href="https://hub.docker.com/r/nickelchen/github-gitea-mirror"><img src="https://img.shields.io/docker/pulls/nickelchen/github-gitea-mirror?style=flat-square" alt="Docker"></a>
-    <a href="LICENSE"><img src="https://img.shields.io/github/license/nickelchen/github-gitea-mirror?style=flat-square" alt="License"></a>
+    <a href="https://github.com/baibaomen/github-gitea-mirror/pkgs/container/github-gitea-mirror"><img src="https://img.shields.io/badge/docker-ghcr.io-blue?style=flat-square" alt="Docker"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/github/license/baibaomen/github-gitea-mirror?style=flat-square" alt="License"></a>
   </p>
   <p align="center">
     <a href="README.md">🇺🇸 English</a>
@@ -32,7 +32,7 @@ docker run -d --name github-gitea-mirror \
   -e GITEA_TOKEN=your_gitea_token \
   -e GITEA_OWNER=your_username \
   --restart unless-stopped \
-  nickelchen/github-gitea-mirror
+  ghcr.io/baibaomen/github-gitea-mirror
 ```
 
 完成！默认每 10 分钟检查一次新仓库。
@@ -64,7 +64,7 @@ jobs:
   mirror:
     runs-on: ubuntu-latest
     steps:
-      - uses: nickelchen/github-gitea-mirror@v1
+      - uses: baibaomen/github-gitea-mirror@master
         with:
           github_token: ${{ secrets.GH_PAT }}
           gitea_url: https://your-gitea.com
@@ -118,7 +118,7 @@ jobs:
 ```yaml
 services:
   mirror:
-    image: nickelchen/github-gitea-mirror
+    image: ghcr.io/baibaomen/github-gitea-mirror
     restart: unless-stopped
     environment:
       - GITHUB_TOKEN=${GITHUB_TOKEN}
@@ -134,7 +134,7 @@ services:
 ## 🛠️ 开发
 
 ```bash
-git clone https://github.com/nickelchen/github-gitea-mirror
+git clone https://github.com/baibaomen/github-gitea-mirror
 cd github-gitea-mirror
 pip install -e ".[dev]"
 

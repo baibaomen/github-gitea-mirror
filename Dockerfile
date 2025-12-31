@@ -9,7 +9,7 @@ RUN pip install --no-cache-dir build && \
 
 FROM python:3.12-slim
 
-LABEL org.opencontainers.image.source="https://github.com/nickelchen/github-gitea-mirror"
+LABEL org.opencontainers.image.source="https://github.com/baibaomen/github-gitea-mirror"
 LABEL org.opencontainers.image.description="Automatically mirror GitHub repos to Gitea"
 LABEL org.opencontainers.image.licenses="MIT"
 

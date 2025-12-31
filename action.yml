@@ -1,6 +1,6 @@
 name: 'GitHub Gitea Mirror'
 description: 'Automatically mirror your GitHub repos to Gitea'
-author: 'nickelchen'
+author: 'baibaomen'
 
 branding:
   icon: 'copy'
@@ -35,14 +35,20 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: Checkout this action
+      uses: actions/checkout@v4
+      with:
+        repository: baibaomen/github-gitea-mirror
+        path: _github-gitea-mirror
+
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.12'
 
-    - name: Install github-gitea-mirror
+    - name: Install from source
       shell: bash
-      run: pip install github-gitea-mirror
+      run: pip install ./_github-gitea-mirror
 
     - name: Run sync
       shell: bash

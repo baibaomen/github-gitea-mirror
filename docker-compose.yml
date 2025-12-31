@@ -1,7 +1,7 @@
 services:
   mirror:
     build: .
-    image: nickelchen/github-gitea-mirror
+    image: baibaomen/github-gitea-mirror
     container_name: github-gitea-mirror
     restart: unless-stopped
     environment:

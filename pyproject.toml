@@ -49,11 +49,11 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/nickelchen/github-gitea-mirror"
-Documentation = "https://github.com/nickelchen/github-gitea-mirror#readme"
-Repository = "https://github.com/nickelchen/github-gitea-mirror"
-Issues = "https://github.com/nickelchen/github-gitea-mirror/issues"
-Changelog = "https://github.com/nickelchen/github-gitea-mirror/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/baibaomen/github-gitea-mirror"
+Documentation = "https://github.com/baibaomen/github-gitea-mirror#readme"
+Repository = "https://github.com/baibaomen/github-gitea-mirror"
+Issues = "https://github.com/baibaomen/github-gitea-mirror/issues"
+Changelog = "https://github.com/baibaomen/github-gitea-mirror/blob/main/CHANGELOG.md"
 
 [project.scripts]
 github-gitea-mirror = "github_gitea_mirror.cli:app"

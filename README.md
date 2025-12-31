@@ -4,11 +4,11 @@
     <strong>Automatically discover and mirror your entire GitHub account to your self-hosted Gitea.</strong>
   </p>
   <p align="center">
-    <a href="https://github.com/nickelchen/github-gitea-mirror/releases"><img src="https://img.shields.io/github/v/release/nickelchen/github-gitea-mirror?style=flat-square" alt="Release"></a>
-    <a href="https://github.com/nickelchen/github-gitea-mirror/actions"><img src="https://img.shields.io/github/actions/workflow/status/nickelchen/github-gitea-mirror/ci.yml?style=flat-square" alt="CI"></a>
+    <a href="https://github.com/baibaomen/github-gitea-mirror/releases"><img src="https://img.shields.io/github/v/release/baibaomen/github-gitea-mirror?style=flat-square" alt="Release"></a>
+    <a href="https://github.com/baibaomen/github-gitea-mirror/actions"><img src="https://img.shields.io/github/actions/workflow/status/baibaomen/github-gitea-mirror/ci.yml?style=flat-square" alt="CI"></a>
     <a href="https://pypi.org/project/github-gitea-mirror/"><img src="https://img.shields.io/pypi/v/github-gitea-mirror?style=flat-square" alt="PyPI"></a>
-    <a href="https://hub.docker.com/r/nickelchen/github-gitea-mirror"><img src="https://img.shields.io/docker/pulls/nickelchen/github-gitea-mirror?style=flat-square" alt="Docker"></a>
-    <a href="LICENSE"><img src="https://img.shields.io/github/license/nickelchen/github-gitea-mirror?style=flat-square" alt="License"></a>
+    <a href="https://hub.docker.com/r/baibaomen/github-gitea-mirror"><img src="https://img.shields.io/docker/pulls/baibaomen/github-gitea-mirror?style=flat-square" alt="Docker"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/github/license/baibaomen/github-gitea-mirror?style=flat-square" alt="License"></a>
   </p>
   <p align="center">
     <a href="README.zh-CN.md">🇨🇳 中文文档</a>
@@ -32,7 +32,7 @@ docker run -d --name github-gitea-mirror \
   -e GITEA_TOKEN=your_gitea_token \
   -e GITEA_OWNER=your_username \
   --restart unless-stopped \
-  nickelchen/github-gitea-mirror
+  baibaomen/github-gitea-mirror
 ```
 
 Done! It will check for new repos every 10 minutes.
@@ -64,7 +64,7 @@ jobs:
   mirror:
     runs-on: ubuntu-latest
     steps:
-      - uses: nickelchen/github-gitea-mirror@v1
+      - uses: baibaomen/github-gitea-mirror@master
         with:
           github_token: ${{ secrets.GH_PAT }}
           gitea_url: https://your-gitea.com
@@ -118,7 +118,7 @@ For persistent deployment:
 ```yaml
 services:
   mirror:
-    image: nickelchen/github-gitea-mirror
+    image: baibaomen/github-gitea-mirror
     restart: unless-stopped
     environment:
       - GITHUB_TOKEN=${GITHUB_TOKEN}
@@ -134,7 +134,7 @@ services:
 ## 🛠️ Development
 
 ```bash
-git clone https://github.com/nickelchen/github-gitea-mirror
+git clone https://github.com/baibaomen/github-gitea-mirror
 cd github-gitea-mirror
 pip install -e ".[dev]"
 
