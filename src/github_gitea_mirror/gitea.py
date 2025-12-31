@@ -81,8 +81,8 @@ class GiteaClient:
         Returns:
             True if successful, False otherwise.
         """
-        # Build authenticated clone URL
-        auth_url = repo.clone_url.replace("https://", f"https://{github_token}@")
+        # Build authenticated clone URL (always use oauth2 format for GitHub)
+        auth_url = repo.clone_url.replace("https://", f"https://oauth2:{github_token}@")
 
         payload = {
             "clone_addr": auth_url,
