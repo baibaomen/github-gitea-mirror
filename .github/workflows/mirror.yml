@@ -1,0 +1,20 @@
+name: Mirror to Gitea
+
+on:
+  schedule:
+    - cron: '17 */2 * * *'
+  workflow_dispatch:
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: baibaomen/github-gitea-mirror@70cb2981f666cf4b341d7a8dc985bd3b6c7933c8
+        with:
+          github_token: ${{ secrets.GH_PAT }}
+          gitea_url: https://git.baibaomen.com
+          gitea_token: ${{ secrets.GITEA_TOKEN }}
+          gitea_owner: baibaomen
+          include_private: 'true'
+          include_forks: 'true'
